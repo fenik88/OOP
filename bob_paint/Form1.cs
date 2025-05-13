@@ -251,6 +251,7 @@ namespace bob_paint
             }
         }
 
+        // не реалиховал пока сохранение и загрузку
         private void button1_Click_1(object sender, EventArgs e)
         {
           //  undoRedoShapes.SaveShapes();
