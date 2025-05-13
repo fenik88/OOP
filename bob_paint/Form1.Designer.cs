@@ -190,7 +190,7 @@ namespace bob_paint
             this.buttonUNDO.Name = "buttonUNDO";
             this.buttonUNDO.Size = new System.Drawing.Size(112, 61);
             this.buttonUNDO.TabIndex = 8;
-            this.buttonUNDO.Text = "CTRL+Z";
+            this.buttonUNDO.Text = "UnDo";
             this.buttonUNDO.UseVisualStyleBackColor = true;
             this.buttonUNDO.Click += new System.EventHandler(this.buttonUNDO_Click);
             // 
@@ -201,7 +201,7 @@ namespace bob_paint
             this.buttonREDO.Name = "buttonREDO";
             this.buttonREDO.Size = new System.Drawing.Size(112, 61);
             this.buttonREDO.TabIndex = 9;
-            this.buttonREDO.Text = "CTRL+Y";
+            this.buttonREDO.Text = "ReDo";
             this.buttonREDO.UseVisualStyleBackColor = true;
             this.buttonREDO.Click += new System.EventHandler(this.buttonREDO_Click);
             // 
