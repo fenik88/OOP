@@ -7,30 +7,31 @@ using System.Threading.Tasks;
 
 namespace bob_paint.classes.figure
 {
-    internal class RectangleShape:baseShape
+    internal class EllipsShape: baseShape
     {
         protected Point startPosition { set; get; }
         protected Point endPosition { set; get; }
 
         protected Color ColorFill { get; set; }
 
-        public RectangleShape(Point start, Point end, Color colorL, float widthL, Color colorF) : base(colorL, widthL)
+        public EllipsShape(Point start, Point end, Color colorL, float widthL, Color colorF) : base(colorL, widthL)
         {
             this.startPosition = start;
             this.endPosition = end;
-            ColorFill= colorF;
+            this.ColorFill = colorF;
         }
 
         public override void Draw(Graphics graphics)
         {
             Brush brush = (ColorFill != Color.FromArgb(255, 255, 255, 255)) ? new SolidBrush(ColorFill) : null;
-            Rectangle rect = new Rectangle(startPosition.X, startPosition.Y, Math.Abs(endPosition.X - startPosition.X), Math.Abs(endPosition.Y - startPosition.Y));
+            Rectangle rect = new Rectangle(startPosition.X, startPosition.Y, Math.Abs(endPosition.X-startPosition.X), Math.Abs(endPosition.Y - startPosition.Y));
             if (brush != null)
             {
-                graphics.FillRectangle(brush, rect);
+                graphics.FillEllipse(brush, rect);
             }
-            graphics.DrawRectangle(pen, rect);
-
+          
+            graphics.DrawEllipse(pen, rect);
         }
+
     }
 }

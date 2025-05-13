@@ -1,32 +1,37 @@
 ﻿using bob_paint.classes.figure;
+using bob_paint.classes.lists;
+using bob_paint.classes.settings;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+public enum ShapeType
+{
+    Line,
+    Rectangle,
+    Ellips,
+    Polygon,
+    BrokenLine
+}
 
 namespace bob_paint
 {
     public partial class Form1 : Form
     {
-        private List<baseShape> shapes; 
-        private Point tempStartPoint;
-        private Point tempEndPoint;
-        private bool isDrawing;
+        private settingsTempShape settingShape = new settingsTempShape();
+        private UndoRedoShapes undoRedoShapes = new UndoRedoShapes();
+        private List<baseShape> shapes;
         private string selectedShape;
-        private Pen tempPen;
+        private List<Point> currentBrokenLinePoints = new List<Point> { };
+
         public Form1()
         {
             InitializeComponent();
             shapes = new List<baseShape> { };
-            tempPen = new Pen(Color.Black, 2);
-
+            
+            settingShape.FillColor= Color.FromArgb(255, 255, 255, 255);
 
             LineToolStripMenuItem.Image = Properties.Resources.Line;
             rectangleToolStripMenuItem.Image = Properties.Resources.Rectangle;
@@ -36,9 +41,6 @@ namespace bob_paint
 
             contextMenuStripBaseFigure.ImageScalingSize = new Size(32, 32);
             ShapeButton.ContextMenuStrip = contextMenuStripBaseFigure;
-
-
-
 
             ShapeButton.Image = Properties.Resources.Line;
             ShapeButton.MouseDown += new MouseEventHandler(ShapeButton_MouseDown);
@@ -55,8 +57,6 @@ namespace bob_paint
             ColorButton.BackColor= Color.Black;
         }
 
- 
-
         private void ShapeButton_MouseDown(object sender, MouseEventArgs e)
         {
            
@@ -72,28 +72,51 @@ namespace bob_paint
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
+            shapes= undoRedoShapes.Shapes;
             foreach (var shape in shapes)
             {
                 shape.Draw(e.Graphics); 
             }
 
-            if (isDrawing)
+            if (settingShape.isDrawing)
             {
                 baseShape temporaryShape = null;
+                
+                if ((selectedShape == "Rectangle") || (selectedShape == "Ellips"))
+                {
+                    settingShape.AdjustCoordinates();
+
+                }
 
                 if (selectedShape == "Line")
                 {
-                    temporaryShape = new LineShape(tempStartPoint, tempEndPoint, tempPen.Color, tempPen.Width);
+                    temporaryShape = new LineShape(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width);
                 }
                 else if (selectedShape == "Rectangle")
                 {
-                    temporaryShape = new RectangleShape(tempStartPoint, tempEndPoint, tempPen.Color, tempPen.Width);
+                    temporaryShape = new RectangleShape(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width,settingShape.FillColor);
+                }
+                else if (selectedShape == "Ellips")
+                {
+                    temporaryShape = new EllipsShape(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width, settingShape.FillColor);
+                }
+                else if (selectedShape == "Polygon")
+                {
+                    temporaryShape = new Polygon(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width, settingShape.FillColor,5);
+                }
+                else if (selectedShape == "BrokenLine")
+                {
+                    temporaryShape = new BrokenLine (currentBrokenLinePoints, settingShape.StrokeColor, settingShape.Width);
                 }
 
                 if (temporaryShape != null)
                 {
                     temporaryShape.Draw(e.Graphics);
                 }
+
+                    settingShape.RotateX();
+                    settingShape.RotateY();
+
             }
         }
 
@@ -101,73 +124,95 @@ namespace bob_paint
         {
             if (e.Button == MouseButtons.Left && !string.IsNullOrEmpty(selectedShape))
             {
-                tempStartPoint = e.Location; 
-                isDrawing = true;
+                settingShape.tempStartPoint = e.Location; 
+                settingShape.isDrawing = true;
             }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDrawing)
+            if (settingShape.isDrawing && selectedShape != "BrokenLine")
             {
-                tempEndPoint = e.Location;
+                settingShape.tempEndPoint = e.Location;
                 pictureBox1.Invalidate();
             }
+           
+
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && isDrawing && !string.IsNullOrEmpty(selectedShape))
+            if (selectedShape == "BrokenLine")
             {
-                tempEndPoint = e.Location;
+                if (e.Button == MouseButtons.Left)
+                { currentBrokenLinePoints.Add(e.Location); }
+                pictureBox1.Invalidate();
+            }
+
+            if (e.Button == MouseButtons.Left && settingShape.isDrawing && !string.IsNullOrEmpty(selectedShape))
+            {
+         
+                settingShape.tempEndPoint = e.Location;
                 baseShape newShape = null;
+
+                if ((selectedShape == "Rectangle") || (selectedShape == "Ellips"))
+                { 
+                    settingShape.AdjustCoordinates();
+                    settingShape.isRotateX = false;
+                    settingShape.isRotateY = false;
+                }
 
                 if (selectedShape == "Line")
                 {
-                    newShape = new LineShape(tempStartPoint, tempEndPoint, tempPen.Color, tempPen.Width);
+                    newShape = new LineShape(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width);
                 }
                 else if (selectedShape == "Rectangle")
                 {
-                    newShape = new RectangleShape(tempStartPoint, tempEndPoint, tempPen.Color, tempPen.Width);
+                    newShape = new RectangleShape(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width, settingShape.FillColor);
+                }
+                else if (selectedShape == "Ellips")
+                {
+                    newShape = new EllipsShape(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width, settingShape.FillColor);
+                }
+                else if (selectedShape == "Polygon")
+                {
+                    newShape = new Polygon(settingShape.tempStartPoint, settingShape.tempEndPoint, settingShape.StrokeColor, settingShape.Width, settingShape.FillColor, 5);
+                }
+                else if (selectedShape == "BrokenLine")
+                {
+                    newShape = new BrokenLine(currentBrokenLinePoints, settingShape.StrokeColor, settingShape.Width);
+                   
                 }
 
                 if (newShape != null)
                 {
-                    shapes.Add(newShape);
+                    undoRedoShapes.AddShape(newShape);
                 }
 
-                isDrawing = false;
+                
+                settingShape.isDrawing = false;
                 pictureBox1.Invalidate();
             }
         }
 
-        // LINE
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           
-            pictureBox1.Invalidate();
             selectedShape = "Line";
         }
 
-        // RECTANGLE
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             selectedShape = "Rectangle";
         }
-
-        //POLYGON
         private void PolygonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             selectedShape = "Polygon";
         }
-
-        //ELLIPS
         private void EllipsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             selectedShape = "Ellips";
         }
 
-        //BROKEN LINE
         private void BrokenLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             selectedShape = "BrokenLine";
@@ -179,15 +224,51 @@ namespace bob_paint
             {
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    tempPen.Color = colorDialog.Color; 
+                    settingShape.StrokeColor = colorDialog.Color; 
                     ColorButton.BackColor = colorDialog.Color;
                 }
             }
         }
 
-        private void ShapeButton_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            using (ColorDialog colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    settingShape.FillColor = colorDialog.Color;
+                    buttonFillColor.BackColor = colorDialog.Color;
+                }
+            }
+        }
 
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            settingShape.Width = trackBar1.Value;
+        }
+        private void AddShapeToMenu(ShapeType type, string name)
+        {
+            var item = new ToolStripMenuItem(name);
+            item.Tag = type; 
+             // item.Image = icon;
+            //item.Click += ShapeMenuItem_Click;
+            contextMenuStripBaseFigure.Items.Add(item);
+        }
+        private void addPlugin_Click(object sender, EventArgs e)
+        {
+            AddShapeToMenu(ShapeType.Line, "shmakadyvka");
+        }
+
+        private void buttonUNDO_Click(object sender, EventArgs e)
+        {
+            undoRedoShapes.Undo();
+            pictureBox1.Invalidate();
+        }
+
+        private void buttonREDO_Click(object sender, EventArgs e)
+        {
+            undoRedoShapes.Redo();
+            pictureBox1.Invalidate();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
