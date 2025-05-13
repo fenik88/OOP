@@ -50,6 +50,11 @@ namespace bob_paint
             this.button2 = new System.Windows.Forms.Button();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.menuStripUP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,8 +64,15 @@ namespace bob_paint
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.ShapeButton);
+            this.panel1.Controls.Add(this.ColorButton);
+            this.panel1.Controls.Add(this.buttonFillColor);
+            this.panel1.Controls.Add(this.buttonREDO);
+            this.panel1.Controls.Add(this.buttonUNDO);
             this.panel1.Location = new System.Drawing.Point(0, 111);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
@@ -69,7 +81,7 @@ namespace bob_paint
             // 
             // ShapeButton
             // 
-            this.ShapeButton.Location = new System.Drawing.Point(4, 22);
+            this.ShapeButton.Location = new System.Drawing.Point(8, 58);
             this.ShapeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ShapeButton.Name = "ShapeButton";
             this.ShapeButton.Size = new System.Drawing.Size(75, 70);
@@ -79,7 +91,7 @@ namespace bob_paint
             // 
             // menuStripUP
             // 
-            this.menuStripUP.BackColor = System.Drawing.SystemColors.GrayText;
+            this.menuStripUP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.menuStripUP.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStripUP.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripUP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -87,9 +99,10 @@ namespace bob_paint
             this.menuStripUP.Location = new System.Drawing.Point(0, 0);
             this.menuStripUP.Name = "menuStripUP";
             this.menuStripUP.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStripUP.Size = new System.Drawing.Size(1611, 48);
+            this.menuStripUP.Size = new System.Drawing.Size(1611, 42);
             this.menuStripUP.TabIndex = 1;
             this.menuStripUP.Text = "menuStrip1";
+            this.menuStripUP.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripUP_ItemClicked);
             // 
             // menuStripUP_FILE
             // 
@@ -98,6 +111,7 @@ namespace bob_paint
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6});
+            this.menuStripUP_FILE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStripUP_FILE.Name = "menuStripUP_FILE";
             this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 36);
             this.menuStripUP_FILE.Text = "FIle";
@@ -105,25 +119,25 @@ namespace bob_paint
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(160, 44);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(359, 44);
             this.toolStripMenuItem3.Text = "1";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(160, 44);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(359, 44);
             this.toolStripMenuItem4.Text = "2";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(160, 44);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(359, 44);
             this.toolStripMenuItem5.Text = "3";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(160, 44);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(359, 44);
             this.toolStripMenuItem6.Text = "4";
             // 
             // pictureBox1
@@ -152,7 +166,7 @@ namespace bob_paint
             // ColorButton
             // 
             this.ColorButton.BackColor = System.Drawing.Color.Black;
-            this.ColorButton.Location = new System.Drawing.Point(194, 50);
+            this.ColorButton.Location = new System.Drawing.Point(13, 221);
             this.ColorButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ColorButton.Name = "ColorButton";
             this.ColorButton.Size = new System.Drawing.Size(64, 59);
@@ -163,7 +177,7 @@ namespace bob_paint
             // buttonFillColor
             // 
             this.buttonFillColor.BackColor = System.Drawing.Color.White;
-            this.buttonFillColor.Location = new System.Drawing.Point(286, 50);
+            this.buttonFillColor.Location = new System.Drawing.Point(13, 373);
             this.buttonFillColor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonFillColor.Name = "buttonFillColor";
             this.buttonFillColor.Size = new System.Drawing.Size(64, 59);
@@ -173,7 +187,7 @@ namespace bob_paint
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(366, 50);
+            this.trackBar1.Location = new System.Drawing.Point(425, 47);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.trackBar1.Maximum = 25;
             this.trackBar1.Minimum = 1;
@@ -185,10 +199,10 @@ namespace bob_paint
             // 
             // buttonUNDO
             // 
-            this.buttonUNDO.Location = new System.Drawing.Point(910, 48);
+            this.buttonUNDO.Location = new System.Drawing.Point(8, 485);
             this.buttonUNDO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonUNDO.Name = "buttonUNDO";
-            this.buttonUNDO.Size = new System.Drawing.Size(112, 61);
+            this.buttonUNDO.Size = new System.Drawing.Size(84, 61);
             this.buttonUNDO.TabIndex = 8;
             this.buttonUNDO.Text = "UnDo";
             this.buttonUNDO.UseVisualStyleBackColor = true;
@@ -196,10 +210,10 @@ namespace bob_paint
             // 
             // buttonREDO
             // 
-            this.buttonREDO.Location = new System.Drawing.Point(1032, 50);
+            this.buttonREDO.Location = new System.Drawing.Point(8, 580);
             this.buttonREDO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonREDO.Name = "buttonREDO";
-            this.buttonREDO.Size = new System.Drawing.Size(112, 61);
+            this.buttonREDO.Size = new System.Drawing.Size(84, 61);
             this.buttonREDO.TabIndex = 9;
             this.buttonREDO.Text = "ReDo";
             this.buttonREDO.UseVisualStyleBackColor = true;
@@ -218,7 +232,7 @@ namespace bob_paint
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(0, 50);
+            this.trackBar2.Location = new System.Drawing.Point(104, 47);
             this.trackBar2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.trackBar2.Maximum = 25;
             this.trackBar2.Minimum = 5;
@@ -239,18 +253,62 @@ namespace bob_paint
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(86, 31);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.Text = "Shapes";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(3, 156);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(82, 56);
+            this.textBox2.TabIndex = 11;
+            this.textBox2.Text = "Line\r\nColor";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(7, 306);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(82, 56);
+            this.textBox3.TabIndex = 12;
+            this.textBox3.Text = "Fill\r\nColor";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(13, 54);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(72, 31);
+            this.textBox4.TabIndex = 13;
+            this.textBox4.Text = "Angles";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(305, 54);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(109, 31);
+            this.textBox5.TabIndex = 14;
+            this.textBox5.Text = "Thinkness";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1611, 867);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonREDO);
-            this.Controls.Add(this.buttonUNDO);
-            this.Controls.Add(this.buttonFillColor);
-            this.Controls.Add(this.ColorButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStripUP);
@@ -262,6 +320,7 @@ namespace bob_paint
             this.Text = "Paint";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.menuStripUP.ResumeLayout(false);
             this.menuStripUP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -293,6 +352,11 @@ namespace bob_paint
         private System.Windows.Forms.Button button2;
         private TrackBar trackBar2;
         private Button button1;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private TextBox textBox5;
     }
 }
 
