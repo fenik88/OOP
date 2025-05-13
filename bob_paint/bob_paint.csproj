@@ -33,8 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>bob_paint.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -94,7 +93,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="classes\plugin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ico\ShapeICO\Ellips.png" />
@@ -110,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ico\ShapeICO\BrokenLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undefine.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

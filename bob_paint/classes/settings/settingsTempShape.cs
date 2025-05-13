@@ -10,8 +10,9 @@ namespace bob_paint.classes.settings
 {
     internal class settingsTempShape
     {
-        public Point tempStartPoint { get; set; } = new Point();
-        public Point tempEndPoint { get; set; } = new Point();
+      
+        public Point startPosition { get; set; } = new Point();
+        public Point endPosition { get; set; } = new Point();
 
         public Color StrokeColor { get; set; } = Color.Black;
         public Color FillColor { get; set; } = Color.FromArgb(255, 255, 255, 255);
@@ -23,23 +24,21 @@ namespace bob_paint.classes.settings
         public bool isRotateY { get; set; } = false;
 
 
-        public ShapeType SelectedShape { get; set; } = ShapeType.Line;
-
 
         public void AdjustCoordinates()
         {
-            if (tempStartPoint.X > tempEndPoint.X)
+            if (startPosition.X > endPosition.X)
             {
-                int temp = tempStartPoint.X;
-                tempStartPoint = new Point(tempEndPoint.X, tempStartPoint.Y);
-                tempEndPoint = new Point(temp, tempEndPoint.Y);
+                int temp = startPosition.X;
+                startPosition = new Point(endPosition.X, startPosition.Y);
+                endPosition = new Point(temp, endPosition.Y);
                 isRotateX = true;
             }
-            if (tempStartPoint.Y > tempEndPoint.Y)
+            if (startPosition.Y > endPosition.Y)
             {
-                int temp = tempStartPoint.Y;
-                tempStartPoint = new Point(tempStartPoint.X, tempEndPoint.Y);
-                tempEndPoint = new Point(tempEndPoint.X, temp);
+                int temp = startPosition.Y;
+                startPosition = new Point(startPosition.X, endPosition.Y);
+                endPosition = new Point(endPosition.X, temp);
                 isRotateY=true;
             }
         }
@@ -48,9 +47,9 @@ namespace bob_paint.classes.settings
         {
             if (isRotateX)
             {
-                int temp = this.tempStartPoint.X;
-                this.tempStartPoint = new Point(this.tempEndPoint.X, this.tempStartPoint.Y);
-                this.tempEndPoint = new Point(temp, this.tempEndPoint.Y);
+                int temp = this.startPosition.X;
+                this.startPosition = new Point(this.endPosition.X, this.startPosition.Y);
+                this.endPosition = new Point(temp, this.endPosition.Y);
                 isRotateX = false;
             }
             
@@ -60,9 +59,9 @@ namespace bob_paint.classes.settings
         {
             if (isRotateY)
             {
-                int temp = this.tempStartPoint.Y;
-                this.tempStartPoint = new Point(this.tempStartPoint.X, this.tempEndPoint.Y);
-                this.tempEndPoint = new Point(this.tempEndPoint.X, temp);
+                int temp = this.startPosition.Y;
+                this.startPosition = new Point(this.startPosition.X, this.endPosition.Y);
+                this.endPosition = new Point(this.endPosition.X, temp);
                 isRotateY = false;
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace bob_paint
+﻿using System.Windows.Forms;
+
+namespace bob_paint
 {
     partial class Form1
     {
@@ -39,23 +41,20 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStripBaseFigure = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.LineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rectangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EllipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BrokenLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialogPen = new System.Windows.Forms.ColorDialog();
             this.ColorButton = new System.Windows.Forms.Button();
             this.buttonFillColor = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.addPlugin = new System.Windows.Forms.Button();
             this.buttonUNDO = new System.Windows.Forms.Button();
             this.buttonREDO = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStripUP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.contextMenuStripBaseFigure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,6 +75,7 @@
             this.ShapeButton.Size = new System.Drawing.Size(75, 70);
             this.ShapeButton.TabIndex = 0;
             this.ShapeButton.UseVisualStyleBackColor = true;
+            this.ShapeButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShapeButton_MouseDown);
             // 
             // menuStripUP
             // 
@@ -87,7 +87,7 @@
             this.menuStripUP.Location = new System.Drawing.Point(0, 0);
             this.menuStripUP.Name = "menuStripUP";
             this.menuStripUP.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStripUP.Size = new System.Drawing.Size(1456, 42);
+            this.menuStripUP.Size = new System.Drawing.Size(1611, 48);
             this.menuStripUP.TabIndex = 1;
             this.menuStripUP.Text = "menuStrip1";
             // 
@@ -137,53 +137,17 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // contextMenuStripBaseFigure
             // 
             this.contextMenuStripBaseFigure.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStripBaseFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LineToolStripMenuItem,
-            this.rectangleToolStripMenuItem,
-            this.PolygonToolStripMenuItem,
-            this.EllipsToolStripMenuItem,
-            this.BrokenLineToolStripMenuItem});
             this.contextMenuStripBaseFigure.Name = "contextMenuStripBaseFigure";
-            this.contextMenuStripBaseFigure.Size = new System.Drawing.Size(215, 194);
-            // 
-            // LineToolStripMenuItem
-            // 
-            this.LineToolStripMenuItem.Name = "LineToolStripMenuItem";
-            this.LineToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
-            this.LineToolStripMenuItem.Text = "Line";
-            this.LineToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // rectangleToolStripMenuItem
-            // 
-            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
-            this.rectangleToolStripMenuItem.Text = "Rectangle";
-            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
-            // 
-            // PolygonToolStripMenuItem
-            // 
-            this.PolygonToolStripMenuItem.Name = "PolygonToolStripMenuItem";
-            this.PolygonToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
-            this.PolygonToolStripMenuItem.Text = "Polygon";
-            this.PolygonToolStripMenuItem.Click += new System.EventHandler(this.PolygonToolStripMenuItem_Click);
-            // 
-            // EllipsToolStripMenuItem
-            // 
-            this.EllipsToolStripMenuItem.Name = "EllipsToolStripMenuItem";
-            this.EllipsToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
-            this.EllipsToolStripMenuItem.Text = "Ellips";
-            this.EllipsToolStripMenuItem.Click += new System.EventHandler(this.EllipsToolStripMenuItem_Click);
-            // 
-            // BrokenLineToolStripMenuItem
-            // 
-            this.BrokenLineToolStripMenuItem.Name = "BrokenLineToolStripMenuItem";
-            this.BrokenLineToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
-            this.BrokenLineToolStripMenuItem.Text = "Broken Line";
-            this.BrokenLineToolStripMenuItem.Click += new System.EventHandler(this.BrokenLineToolStripMenuItem_Click);
+            this.contextMenuStripBaseFigure.Size = new System.Drawing.Size(61, 4);
             // 
             // ColorButton
             // 
@@ -219,17 +183,6 @@
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // addPlugin
-            // 
-            this.addPlugin.Location = new System.Drawing.Point(1234, 50);
-            this.addPlugin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.addPlugin.Name = "addPlugin";
-            this.addPlugin.Size = new System.Drawing.Size(204, 59);
-            this.addPlugin.TabIndex = 7;
-            this.addPlugin.Text = "add plugin";
-            this.addPlugin.UseVisualStyleBackColor = true;
-            this.addPlugin.Click += new System.EventHandler(this.addPlugin_Click);
-            // 
             // buttonUNDO
             // 
             this.buttonUNDO.Location = new System.Drawing.Point(910, 48);
@@ -252,21 +205,57 @@
             this.buttonREDO.UseVisualStyleBackColor = true;
             this.buttonREDO.Click += new System.EventHandler(this.buttonREDO_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1472, 211);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 77);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "load";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(0, 50);
+            this.trackBar2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.trackBar2.Maximum = 25;
+            this.trackBar2.Minimum = 5;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(180, 90);
+            this.trackBar2.TabIndex = 12;
+            this.trackBar2.Value = 5;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1472, 111);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 77);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1456, 858);
+            this.ClientSize = new System.Drawing.Size(1611, 867);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonREDO);
             this.Controls.Add(this.buttonUNDO);
-            this.Controls.Add(this.addPlugin);
             this.Controls.Add(this.buttonFillColor);
             this.Controls.Add(this.ColorButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStripUP);
             this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.trackBar2);
             this.MainMenuStrip = this.menuStripUP;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
@@ -276,8 +265,8 @@
             this.menuStripUP.ResumeLayout(false);
             this.menuStripUP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.contextMenuStripBaseFigure.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,19 +283,16 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripBaseFigure;
-        private System.Windows.Forms.ToolStripMenuItem LineToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rectangleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem PolygonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem EllipsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem BrokenLineToolStripMenuItem;
         private System.Windows.Forms.Button ShapeButton;
         private System.Windows.Forms.ColorDialog colorDialogPen;
         private System.Windows.Forms.Button ColorButton;
         private System.Windows.Forms.Button buttonFillColor;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button addPlugin;
         private System.Windows.Forms.Button buttonUNDO;
         private System.Windows.Forms.Button buttonREDO;
+        private System.Windows.Forms.Button button2;
+        private TrackBar trackBar2;
+        private Button button1;
     }
 }
 

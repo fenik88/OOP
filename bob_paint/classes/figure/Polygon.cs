@@ -18,12 +18,13 @@ namespace bob_paint.classes.figure
         {
             this.startPosition = start;
             this.endPosition = end;
-            ColorFill = colorF;
+            this.ColorFill = colorF;
             this.nLines = nLines;
         }
 
         public override void Draw(Graphics graphics)
         {
+           
             double degH = 2 * Math.PI / nLines;
             PointF[] points = new PointF[nLines];
 
@@ -40,7 +41,10 @@ namespace bob_paint.classes.figure
 
                 points[i] = new PointF(tempX, tempY);
             }
-
+            using (Brush brush = new SolidBrush(ColorFill))
+            {
+                graphics.FillPolygon(brush, points);
+            }
             graphics.DrawPolygon(pen, points);
         }
     }

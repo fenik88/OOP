@@ -23,6 +23,7 @@ namespace bob_paint.classes.figure
 
         public override void Draw(Graphics graphics)
         {
+            AdjustCoordinates();
             Brush brush = (ColorFill != Color.FromArgb(255, 255, 255, 255)) ? new SolidBrush(ColorFill) : null;
             Rectangle rect = new Rectangle(startPosition.X, startPosition.Y, Math.Abs(endPosition.X-startPosition.X), Math.Abs(endPosition.Y - startPosition.Y));
             if (brush != null)
@@ -32,6 +33,20 @@ namespace bob_paint.classes.figure
           
             graphics.DrawEllipse(pen, rect);
         }
-
+        public void AdjustCoordinates()
+        {
+            if (startPosition.X > endPosition.X)
+            {
+                int temp = startPosition.X;
+                startPosition = new Point(endPosition.X, startPosition.Y);
+                endPosition = new Point(temp, endPosition.Y);
+            }
+            if (startPosition.Y > endPosition.Y)
+            {
+                int temp = startPosition.Y;
+                startPosition = new Point(startPosition.X, endPosition.Y);
+                endPosition = new Point(endPosition.X, temp);
+            }
+        }
     }
 }

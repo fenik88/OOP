@@ -1,46 +1,39 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace bob_paint.classes.figure
 {
-    internal class BrokenLine : LineShape
+    public class BrokenLine : baseShape
     {
-        protected List<Point> points;
+        private List<Point> _points;
 
-        public BrokenLine(List<Point> ps, Color colorL, float widthL)
-            : base(ps.Count > 0 ? ps[0] : Point.Empty,
-                  ps.Count > 1 ? ps[1] : Point.Empty,
-                  colorL, widthL)
+        public BrokenLine(List<Point> points, Color color, float width)
+            : base(color, width)
         {
-            points = new List<Point>(ps); // Создаем копию списка
+            _points = new List<Point>(points);
         }
 
         public override void Draw(Graphics graphics)
         {
-            if (points.Count < 2) return;
+            if (_points.Count < 2) return; 
 
-            // Используем базовый функционал LineShape для рисования каждого отрезка
-            for (int i = 0; i < points.Count - 1; i++)
-            {
-                startPosition = points[i];
-                endPosition = points[i + 1];
-                base.Draw(graphics); // Вызываем базовый метод рисования линии
-            }
+            pen.Color = ColorLine;
+            pen.Width = WidthLine;
+            graphics.DrawLines(pen, _points.ToArray());
         }
-
-        // Добавляем метод для добавления новой точки
         public void AddPoint(Point newPoint)
         {
-            points.Add(newPoint);
+            _points.Add(newPoint);
         }
 
-        // Метод для очистки точек
         public void ClearPoints()
         {
-            points.Clear();
+            _points.Clear();
         }
 
-        // Свойство для получения количества точек
-        public int PointCount => points.Count;
+        public int PointsCount => _points.Count;
+        public Point FirstPoint => _points.Count > 0 ? _points[0] : Point.Empty;
+        public Point LastPoint => _points.Count > 0 ? _points[_points.Count - 1] : Point.Empty;
     }
 }

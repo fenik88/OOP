@@ -3,12 +3,12 @@ using System.Drawing;
 
 namespace bob_paint
 {
-    internal abstract class baseShape
+    public abstract class baseShape
 {
-    protected Color ColorLine { get; set; }
-    protected float WidthLine { get; set; }
+        public Color ColorLine { get; set; }
+        public float WidthLine { get; set; }
 
-    protected Pen pen;
+        public Pen pen;
 
         public baseShape(Color colorL, float widthL)
         {
@@ -19,5 +19,7 @@ namespace bob_paint
         }
 
         public abstract void Draw(Graphics graphics);
+
+
 }
 }
