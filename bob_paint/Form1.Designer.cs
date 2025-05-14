@@ -87,6 +87,7 @@ namespace bob_paint
             this.ShapeButton.Size = new System.Drawing.Size(75, 70);
             this.ShapeButton.TabIndex = 0;
             this.ShapeButton.UseVisualStyleBackColor = true;
+            this.ShapeButton.Click += new System.EventHandler(this.ShapeButton_Click);
             this.ShapeButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShapeButton_MouseDown);
             // 
             // menuStripUP
@@ -113,8 +114,9 @@ namespace bob_paint
             this.toolStripMenuItem6});
             this.menuStripUP_FILE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStripUP_FILE.Name = "menuStripUP_FILE";
-            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 36);
+            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 38);
             this.menuStripUP_FILE.Text = "FIle";
+            this.menuStripUP_FILE.Click += new System.EventHandler(this.menuStripUP_FILE_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -221,12 +223,12 @@ namespace bob_paint
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1472, 211);
+            this.button2.Location = new System.Drawing.Point(1015, 24);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 77);
             this.button2.TabIndex = 11;
-            this.button2.Text = "load";
+            this.button2.Text = "Load";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -244,7 +246,7 @@ namespace bob_paint
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1472, 111);
+            this.button1.Location = new System.Drawing.Point(840, 24);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 77);

@@ -16,6 +16,7 @@ namespace bob_paint.classes.figure
 
         public override void Draw(Graphics graphics)
         {
+            // если точек меньше 2 - отменяем рисование
             if (_points.Count < 2) return; 
 
             pen.Color = ColorLine;
@@ -31,9 +32,5 @@ namespace bob_paint.classes.figure
         {
             _points.Clear();
         }
-
-        public int PointsCount => _points.Count;
-        public Point FirstPoint => _points.Count > 0 ? _points[0] : Point.Empty;
-        public Point LastPoint => _points.Count > 0 ? _points[_points.Count - 1] : Point.Empty;
     }
 }

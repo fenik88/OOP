@@ -24,6 +24,7 @@ namespace bob_paint.classes.figure
         public override void Draw(Graphics graphics)
         {
             AdjustCoordinates();
+            // если цвет заливки белый то кисть не создаем по умолчанию
             Brush brush = (ColorFill != Color.FromArgb(255, 255, 255, 255)) ? new SolidBrush(ColorFill) : null;
             Rectangle rect = new Rectangle(startPosition.X, startPosition.Y, Math.Abs(endPosition.X-startPosition.X), Math.Abs(endPosition.Y - startPosition.Y));
             if (brush != null)
@@ -33,6 +34,7 @@ namespace bob_paint.classes.figure
           
             graphics.DrawEllipse(pen, rect);
         }
+        // избегаем отрицательных значений
         public void AdjustCoordinates()
         {
             if (startPosition.X > endPosition.X)

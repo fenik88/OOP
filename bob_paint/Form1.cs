@@ -2,6 +2,7 @@
 using bob_paint.classes.figure;
 using bob_paint.classes.lists;
 using bob_paint.classes.settings;
+// подключаем нужные пространства имен через директиву using
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,17 +12,29 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
+// основное пространство имен проекта
 namespace bob_paint
 {
     public partial class Form1 : Form
     {
+        // Список всех нарисованных фигур
         private List<baseShape> shapes;
+
+       // настройки текущей фигуры
         private settingsTempShape settingShape = new settingsTempShape();
+
+        //отмена и повтор
         private UndoRedoShapes undoRedoShapes = new UndoRedoShapes();
 
-        private List<string> shapeKeys = new List<string>(); // check consist of
+        private List<string> shapeKeys = new List<string>(); 
+
+        // поставить 5 по умолчанию
         private int CountOfAngle = 5;
+
+        // точки ломаной
         private List<Point> currentBrokenLinePoints = new List<Point> { };
+
+        // создаем фигуру по ключу
         private Dictionary<string, Func<baseShape>> shapeFactory = new Dictionary<string, Func<baseShape>>();
         private string selectedShapeKey;
 
@@ -48,9 +61,10 @@ namespace bob_paint
             if (!shapeKeys.Contains(key))
                 shapeKeys.Add(key);
 
+            // создаем фабрику для создания фигуры
             shapeFactory[key] = factory;
 
-
+            //создаем пункт меню для фигуры
             var menuItem = new ToolStripMenuItem(name)
             {
                 Tag = key,
@@ -71,6 +85,7 @@ namespace bob_paint
 
             if (settingShape.isDrawing && selectedShapeKey != null)
             {
+                // предвартельный просмотр отрисовки ломаной
                 baseShape temporaryShape = null;
                 currentBrokenLinePoints.Add(settingShape.endPosition);
                 temporaryShape = shapeFactory[selectedShapeKey]();
@@ -162,7 +177,8 @@ namespace bob_paint
         }
 
 
-     
+  
+        // добавляем фигуры по умолчанию
         private void InitializeDefaultShapes()
         {
             AddShape(
@@ -229,7 +245,8 @@ namespace bob_paint
                 }
             }
         }
-
+        
+        //меняем цвет заливки и линии фигуры
         private void ColorButton_Click(object sender, EventArgs e)
         {
             using (ColorDialog colorDialog = new ColorDialog())
@@ -251,7 +268,7 @@ namespace bob_paint
             }
         }
 
-        // не реалиховал пока сохранение и загрузку
+        // нужно реализовать сохранение и загрузку и переименовать кнопки
         private void button1_Click_1(object sender, EventArgs e)
         {
           //  undoRedoShapes.SaveShapes();
@@ -262,6 +279,7 @@ namespace bob_paint
            // undoRedoShapes.LoadShapes();
         }
 
+        //завершаем рисование ломаной при двойном нажатии
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
             if (selectedShapeKey == "BrokenLine" && currentBrokenLinePoints.Count >= 2)
@@ -307,6 +325,16 @@ namespace bob_paint
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStripUP_FILE_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShapeButton_Click(object sender, EventArgs e)
         {
 
         }

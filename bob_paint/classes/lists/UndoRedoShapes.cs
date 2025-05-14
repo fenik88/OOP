@@ -9,7 +9,7 @@ namespace bob_paint.classes.lists
 {
     internal class UndoRedoShapes : baseUndoRedo
     {
-
+        //списки отмененных и текущих фигур
         private List<baseShape> shapes = new List<baseShape>();
         private List<baseShape> redo = new List<baseShape>();
 
@@ -36,13 +36,16 @@ namespace bob_paint.classes.lists
             shapes.Clear();  
         }
 
-
+        //добавляем последнюю фигуру в список 
+        // и удаляем из списка фигур
         public override void Undo()
         {
             if (!CanUndo) return;
             redo.Add(shapes[shapes.Count-1]);
             shapes.RemoveAt(shapes.Count - 1); 
         }
+        // добавляем в общий список фигур фигуру из списка redo
+        // убираем эту фигуру из последнего списка
         public override void Redo()
         {
             if (!CanRedo) return;
