@@ -153,7 +153,7 @@ namespace bob_paint
         }
        
 
-
+        // нужно реализовать добавление плагина
         private void AddPlugin(Type shapeType)
         {
             string key = shapeType.Name;
@@ -301,7 +301,7 @@ namespace bob_paint
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void menuStripUP_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -337,6 +337,11 @@ namespace bob_paint
         private void ShapeButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void add_plugin_Click(object sender, EventArgs e)
+        {
+           //AddPlugin();
         }
     }
 }

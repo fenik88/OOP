@@ -32,7 +32,14 @@ namespace bob_paint
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.ShapeButton = new System.Windows.Forms.Button();
+            this.ColorButton = new System.Windows.Forms.Button();
+            this.buttonFillColor = new System.Windows.Forms.Button();
+            this.buttonREDO = new System.Windows.Forms.Button();
+            this.buttonUNDO = new System.Windows.Forms.Button();
             this.menuStripUP = new System.Windows.Forms.MenuStrip();
             this.menuStripUP_FILE = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,19 +49,13 @@ namespace bob_paint
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStripBaseFigure = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.colorDialogPen = new System.Windows.Forms.ColorDialog();
-            this.ColorButton = new System.Windows.Forms.Button();
-            this.buttonFillColor = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.buttonUNDO = new System.Windows.Forms.Button();
-            this.buttonREDO = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.add_plugin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStripUP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,6 +80,35 @@ namespace bob_paint
             this.panel1.Size = new System.Drawing.Size(92, 730);
             this.panel1.TabIndex = 0;
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(7, 306);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(82, 56);
+            this.textBox3.TabIndex = 12;
+            this.textBox3.Text = "Fill\r\nColor";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(3, 156);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(82, 56);
+            this.textBox2.TabIndex = 11;
+            this.textBox2.Text = "Line\r\nColor";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(86, 31);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.Text = "Shapes";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // ShapeButton
             // 
             this.ShapeButton.Location = new System.Drawing.Point(8, 58);
@@ -89,6 +119,50 @@ namespace bob_paint
             this.ShapeButton.UseVisualStyleBackColor = true;
             this.ShapeButton.Click += new System.EventHandler(this.ShapeButton_Click);
             this.ShapeButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShapeButton_MouseDown);
+            // 
+            // ColorButton
+            // 
+            this.ColorButton.BackColor = System.Drawing.Color.Black;
+            this.ColorButton.Location = new System.Drawing.Point(13, 221);
+            this.ColorButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ColorButton.Name = "ColorButton";
+            this.ColorButton.Size = new System.Drawing.Size(64, 59);
+            this.ColorButton.TabIndex = 3;
+            this.ColorButton.UseVisualStyleBackColor = false;
+            this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
+            // 
+            // buttonFillColor
+            // 
+            this.buttonFillColor.BackColor = System.Drawing.Color.White;
+            this.buttonFillColor.Location = new System.Drawing.Point(13, 373);
+            this.buttonFillColor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonFillColor.Name = "buttonFillColor";
+            this.buttonFillColor.Size = new System.Drawing.Size(64, 59);
+            this.buttonFillColor.TabIndex = 4;
+            this.buttonFillColor.UseVisualStyleBackColor = false;
+            this.buttonFillColor.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonREDO
+            // 
+            this.buttonREDO.Location = new System.Drawing.Point(8, 580);
+            this.buttonREDO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonREDO.Name = "buttonREDO";
+            this.buttonREDO.Size = new System.Drawing.Size(84, 61);
+            this.buttonREDO.TabIndex = 9;
+            this.buttonREDO.Text = "ReDo";
+            this.buttonREDO.UseVisualStyleBackColor = true;
+            this.buttonREDO.Click += new System.EventHandler(this.buttonREDO_Click);
+            // 
+            // buttonUNDO
+            // 
+            this.buttonUNDO.Location = new System.Drawing.Point(8, 485);
+            this.buttonUNDO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonUNDO.Name = "buttonUNDO";
+            this.buttonUNDO.Size = new System.Drawing.Size(84, 61);
+            this.buttonUNDO.TabIndex = 8;
+            this.buttonUNDO.Text = "UnDo";
+            this.buttonUNDO.UseVisualStyleBackColor = true;
+            this.buttonUNDO.Click += new System.EventHandler(this.buttonUNDO_Click);
             // 
             // menuStripUP
             // 
@@ -114,32 +188,32 @@ namespace bob_paint
             this.toolStripMenuItem6});
             this.menuStripUP_FILE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStripUP_FILE.Name = "menuStripUP_FILE";
-            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 38);
+            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 36);
             this.menuStripUP_FILE.Text = "FIle";
             this.menuStripUP_FILE.Click += new System.EventHandler(this.menuStripUP_FILE_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(359, 44);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(160, 44);
             this.toolStripMenuItem3.Text = "1";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(359, 44);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(160, 44);
             this.toolStripMenuItem4.Text = "2";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(359, 44);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(160, 44);
             this.toolStripMenuItem5.Text = "3";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(359, 44);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(160, 44);
             this.toolStripMenuItem6.Text = "4";
             // 
             // pictureBox1
@@ -165,28 +239,6 @@ namespace bob_paint
             this.contextMenuStripBaseFigure.Name = "contextMenuStripBaseFigure";
             this.contextMenuStripBaseFigure.Size = new System.Drawing.Size(61, 4);
             // 
-            // ColorButton
-            // 
-            this.ColorButton.BackColor = System.Drawing.Color.Black;
-            this.ColorButton.Location = new System.Drawing.Point(13, 221);
-            this.ColorButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ColorButton.Name = "ColorButton";
-            this.ColorButton.Size = new System.Drawing.Size(64, 59);
-            this.ColorButton.TabIndex = 3;
-            this.ColorButton.UseVisualStyleBackColor = false;
-            this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
-            // 
-            // buttonFillColor
-            // 
-            this.buttonFillColor.BackColor = System.Drawing.Color.White;
-            this.buttonFillColor.Location = new System.Drawing.Point(13, 373);
-            this.buttonFillColor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonFillColor.Name = "buttonFillColor";
-            this.buttonFillColor.Size = new System.Drawing.Size(64, 59);
-            this.buttonFillColor.TabIndex = 4;
-            this.buttonFillColor.UseVisualStyleBackColor = false;
-            this.buttonFillColor.Click += new System.EventHandler(this.button1_Click);
-            // 
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(425, 47);
@@ -198,28 +250,6 @@ namespace bob_paint
             this.trackBar1.TabIndex = 6;
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // buttonUNDO
-            // 
-            this.buttonUNDO.Location = new System.Drawing.Point(8, 485);
-            this.buttonUNDO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonUNDO.Name = "buttonUNDO";
-            this.buttonUNDO.Size = new System.Drawing.Size(84, 61);
-            this.buttonUNDO.TabIndex = 8;
-            this.buttonUNDO.Text = "UnDo";
-            this.buttonUNDO.UseVisualStyleBackColor = true;
-            this.buttonUNDO.Click += new System.EventHandler(this.buttonUNDO_Click);
-            // 
-            // buttonREDO
-            // 
-            this.buttonREDO.Location = new System.Drawing.Point(8, 580);
-            this.buttonREDO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonREDO.Name = "buttonREDO";
-            this.buttonREDO.Size = new System.Drawing.Size(84, 61);
-            this.buttonREDO.TabIndex = 9;
-            this.buttonREDO.Text = "ReDo";
-            this.buttonREDO.UseVisualStyleBackColor = true;
-            this.buttonREDO.Click += new System.EventHandler(this.buttonREDO_Click);
             // 
             // button2
             // 
@@ -255,35 +285,6 @@ namespace bob_paint
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(86, 31);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Text = "Shapes";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(3, 156);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(82, 56);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.Text = "Line\r\nColor";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(7, 306);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(82, 56);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.Text = "Fill\r\nColor";
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(13, 54);
@@ -301,12 +302,24 @@ namespace bob_paint
             this.textBox5.TabIndex = 14;
             this.textBox5.Text = "Thinkness";
             // 
+            // add_plugin
+            // 
+            this.add_plugin.Location = new System.Drawing.Point(1195, 24);
+            this.add_plugin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.add_plugin.Name = "add_plugin";
+            this.add_plugin.Size = new System.Drawing.Size(122, 77);
+            this.add_plugin.TabIndex = 15;
+            this.add_plugin.Text = "Add Plugin";
+            this.add_plugin.UseVisualStyleBackColor = true;
+            this.add_plugin.Click += new System.EventHandler(this.add_plugin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1611, 867);
+            this.Controls.Add(this.add_plugin);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.button2);
@@ -359,6 +372,7 @@ namespace bob_paint
         private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox5;
+        private Button add_plugin;
     }
 }
 
