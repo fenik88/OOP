@@ -35,7 +35,6 @@ namespace bob_paint.classes.figure
 
         }
 
-        // корректируем координаты чтобы с - не остаться
          public void AdjustCoordinates()
          {
             if (startPosition.X > endPosition.X)

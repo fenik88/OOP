@@ -9,7 +9,6 @@ namespace bob_paint.classes.lists
 {
     internal class UndoRedoShapes : baseUndoRedo
     {
-        //списки отмененных и текущих фигур
         private List<baseShape> shapes = new List<baseShape>();
         private List<baseShape> redo = new List<baseShape>();
 
