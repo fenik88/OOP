@@ -1,5 +1,4 @@
-﻿using bob_paint.classes.baseClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -7,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace bob_paint.classes.lists
 {
-    internal class UndoRedoShapes : BaseUndoRedo
+    internal class UndoRedoShapes
     {
         private List<BaseShape> shapes = new List<BaseShape>();
         private List<BaseShape> redo = new List<BaseShape>();
@@ -35,14 +34,14 @@ namespace bob_paint.classes.lists
             shapes.Clear();  
         }
        
-        public override void Undo()
+        public void Undo()
         {
             if (!CanUndo) return;
             redo.Add(shapes[shapes.Count-1]);
             shapes.RemoveAt(shapes.Count - 1); 
         }
        
-        public override void Redo()
+        public void Redo()
         {
             if (!CanRedo) return;
             shapes.Add(redo[redo.Count - 1]);
