@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace bob_paint.classes.settings
 {
-    internal class settingsTempShape
+    internal class SettingsTempShape
     {
       
         public Point startPosition { get; set; } = new Point();

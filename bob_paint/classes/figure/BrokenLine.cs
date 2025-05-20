@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace bob_paint.classes.figure
 {
-    public class BrokenLine : baseShape
+    public class BrokenLine : BaseShape
     {
         private List<Point> _points;
 

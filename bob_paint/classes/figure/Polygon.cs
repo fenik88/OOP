@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bob_paint.classes.figure
 {
-    internal class Polygon : baseShape
+    internal class Polygon : BaseShape
     {
         protected int nLines;
         protected Point startPosition { set; get; }

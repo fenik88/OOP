@@ -7,14 +7,14 @@ using System.Xml.Serialization;
 
 namespace bob_paint.classes.lists
 {
-    internal class UndoRedoShapes : baseUndoRedo
+    internal class UndoRedoShapes : BaseUndoRedo
     {
-        private List<baseShape> shapes = new List<baseShape>();
-        private List<baseShape> redo = new List<baseShape>();
+        private List<BaseShape> shapes = new List<BaseShape>();
+        private List<BaseShape> redo = new List<BaseShape>();
 
-        public List<baseShape> Shapes
+        public List<BaseShape> Shapes
         {
-            get { return new List<baseShape>(shapes); }
+            get { return new List<BaseShape>(shapes); }
             set {}
         }
 
@@ -22,7 +22,7 @@ namespace bob_paint.classes.lists
         public  bool CanRedo { get { return redo.Count > 0; } }
 
 
-        public void AddShape(baseShape shape)
+        public void AddShape(BaseShape shape)
         {
             redo.Clear();
             shapes.Add(shape);

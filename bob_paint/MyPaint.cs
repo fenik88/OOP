@@ -16,9 +16,9 @@ namespace bob_paint
 {
     public partial class Form1 : Form
     {
-        private List<baseShape> shapes;
+        private List<BaseShape> shapes;
 
-        private settingsTempShape settingShape = new settingsTempShape();
+        private SettingsTempShape settingShape = new SettingsTempShape();
 
         private UndoRedoShapes undoRedoShapes = new UndoRedoShapes();
 
@@ -28,14 +28,14 @@ namespace bob_paint
 
         private List<Point> currentBrokenLinePoints = new List<Point> { };
 
-        private Dictionary<string, Func<baseShape>> shapeFactory = new Dictionary<string, Func<baseShape>>();
+        private Dictionary<string, Func<BaseShape>> shapeFactory = new Dictionary<string, Func<BaseShape>>();
         private string selectedShapeKey;
 
         public Form1()
         {
             InitializeComponent();
             InitializeDefaultShapes();
-            shapes = new List<baseShape> { };
+            shapes = new List<BaseShape> { };
 
             settingShape.FillColor = Color.FromArgb(255, 255, 255, 255);
             contextMenuStripBaseFigure.ImageScalingSize = new Size(32, 32);
@@ -49,7 +49,7 @@ namespace bob_paint
             ColorButton.BackColor = Color.Black;
         }
 
-        private void AddShape(string key, string name, Image icon, Func<baseShape> factory)
+        private void AddShape(string key, string name, Image icon, Func<BaseShape> factory)
         {
             if (!shapeKeys.Contains(key))
                 shapeKeys.Add(key);
@@ -76,7 +76,7 @@ namespace bob_paint
 
             if (settingShape.isDrawing && selectedShapeKey != null)
             {
-                baseShape temporaryShape = null;
+                BaseShape temporaryShape = null;
                 currentBrokenLinePoints.Add(settingShape.endPosition);
                 temporaryShape = shapeFactory[selectedShapeKey]();
                 currentBrokenLinePoints.Remove(settingShape.endPosition);
@@ -121,7 +121,7 @@ namespace bob_paint
                 {
 
                     settingShape.endPosition = e.Location;
-                    baseShape temporaryShape = shapeFactory[selectedShapeKey]();
+                    BaseShape temporaryShape = shapeFactory[selectedShapeKey]();
                     if (temporaryShape != null)
                     {
                         undoRedoShapes.AddShape(temporaryShape);
@@ -151,7 +151,7 @@ namespace bob_paint
             if (!shapeKeys.Contains(key))
                 shapeKeys.Add(key);
 
-            shapeFactory[key] = () => (baseShape)Activator.CreateInstance(
+            shapeFactory[key] = () => (BaseShape)Activator.CreateInstance(
                 shapeType,
                 settingShape.startPosition,
                 settingShape.endPosition,

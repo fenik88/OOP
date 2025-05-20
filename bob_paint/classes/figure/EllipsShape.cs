@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bob_paint.classes.figure
 {
-    internal class EllipsShape: baseShape
+    internal class EllipsShape: BaseShape
     {
         protected Point startPosition { set; get; }
         protected Point endPosition { set; get; }
