@@ -2,7 +2,7 @@
 
 namespace bob_paint
 {
-    partial class Form1
+    partial class MyPaint
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -174,7 +174,7 @@ namespace bob_paint
             this.menuStripUP.Location = new System.Drawing.Point(0, 0);
             this.menuStripUP.Name = "menuStripUP";
             this.menuStripUP.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStripUP.Size = new System.Drawing.Size(1611, 48);
+            this.menuStripUP.Size = new System.Drawing.Size(1611, 42);
             this.menuStripUP.TabIndex = 1;
             this.menuStripUP.Text = "menuStrip1";
             this.menuStripUP.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripUP_ItemClicked);
@@ -188,7 +188,7 @@ namespace bob_paint
             this.toolStripMenuItem6});
             this.menuStripUP_FILE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStripUP_FILE.Name = "menuStripUP_FILE";
-            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 42);
+            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 36);
             this.menuStripUP_FILE.Text = "FIle";
             this.menuStripUP_FILE.Click += new System.EventHandler(this.menuStripUP_FILE_Click);
             // 

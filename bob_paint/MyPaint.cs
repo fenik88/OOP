@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace bob_paint
 {
-    public partial class Form1 : Form
+    public partial class MyPaint : Form
     {
         private List<BaseShape> shapes;
 
@@ -31,7 +31,7 @@ namespace bob_paint
         private Dictionary<string, Func<BaseShape>> shapeFactory = new Dictionary<string, Func<BaseShape>>();
         private string selectedShapeKey;
 
-        public Form1()
+        public MyPaint()
         {
             InitializeComponent();
             InitializeDefaultShapes();
