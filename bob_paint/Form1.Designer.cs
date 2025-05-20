@@ -46,7 +46,7 @@ namespace bob_paint
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Canvas = new System.Windows.Forms.PictureBox();
             this.contextMenuStripBaseFigure = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.colorDialogPen = new System.Windows.Forms.ColorDialog();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
@@ -58,7 +58,7 @@ namespace bob_paint
             this.add_plugin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStripUP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
@@ -174,7 +174,7 @@ namespace bob_paint
             this.menuStripUP.Location = new System.Drawing.Point(0, 0);
             this.menuStripUP.Name = "menuStripUP";
             this.menuStripUP.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStripUP.Size = new System.Drawing.Size(1611, 42);
+            this.menuStripUP.Size = new System.Drawing.Size(1611, 48);
             this.menuStripUP.TabIndex = 1;
             this.menuStripUP.Text = "menuStrip1";
             this.menuStripUP.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripUP_ItemClicked);
@@ -188,7 +188,7 @@ namespace bob_paint
             this.toolStripMenuItem6});
             this.menuStripUP_FILE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStripUP_FILE.Name = "menuStripUP_FILE";
-            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 36);
+            this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 42);
             this.menuStripUP_FILE.Text = "FIle";
             this.menuStripUP_FILE.Click += new System.EventHandler(this.menuStripUP_FILE_Click);
             // 
@@ -216,22 +216,22 @@ namespace bob_paint
             this.toolStripMenuItem6.Size = new System.Drawing.Size(160, 44);
             this.toolStripMenuItem6.Text = "4";
             // 
-            // pictureBox1
+            // Canvas
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(100, 111);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1337, 729);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.Canvas.BackColor = System.Drawing.SystemColors.Control;
+            this.Canvas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Canvas.Location = new System.Drawing.Point(100, 111);
+            this.Canvas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Canvas.Name = "Canvas";
+            this.Canvas.Size = new System.Drawing.Size(1337, 729);
+            this.Canvas.TabIndex = 2;
+            this.Canvas.TabStop = false;
+            this.Canvas.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.Canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.Canvas.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            this.Canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.Canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.Canvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // contextMenuStripBaseFigure
             // 
@@ -324,7 +324,7 @@ namespace bob_paint
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Canvas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStripUP);
             this.Controls.Add(this.trackBar1);
@@ -338,7 +338,7 @@ namespace bob_paint
             this.panel1.PerformLayout();
             this.menuStripUP.ResumeLayout(false);
             this.menuStripUP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Canvas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
@@ -355,7 +355,7 @@ namespace bob_paint
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Canvas;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripBaseFigure;
         private System.Windows.Forms.Button ShapeButton;
         private System.Windows.Forms.ColorDialog colorDialogPen;

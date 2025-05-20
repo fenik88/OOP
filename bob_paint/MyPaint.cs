@@ -104,7 +104,7 @@ namespace bob_paint
             if (settingShape.isDrawing)
             {
                 settingShape.endPosition = e.Location;
-                pictureBox1.Invalidate();
+                Canvas.Invalidate();
             }
         }
 
@@ -115,7 +115,7 @@ namespace bob_paint
                 if (selectedShapeKey == "BrokenLine")
                 {
                     currentBrokenLinePoints.Add(e.Location);
-                    pictureBox1.Invalidate();
+                    Canvas.Invalidate();
                 }
                 else
                 {
@@ -127,7 +127,7 @@ namespace bob_paint
                         undoRedoShapes.AddShape(temporaryShape);
                     }
                     settingShape.isDrawing = false;
-                    pictureBox1.Invalidate();
+                    Canvas.Invalidate();
                 }
             }
         }
@@ -214,13 +214,13 @@ namespace bob_paint
         private void buttonUNDO_Click(object sender, EventArgs e)
         {
             undoRedoShapes.Undo();
-            pictureBox1.Invalidate();
+            Canvas.Invalidate();
         }
 
         private void buttonREDO_Click(object sender, EventArgs e)
         {
             undoRedoShapes.Redo();
-            pictureBox1.Invalidate();
+            Canvas.Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -277,7 +277,7 @@ namespace bob_paint
                 undoRedoShapes.AddShape(brokenLine);
                 currentBrokenLinePoints.Clear();
                 settingShape.isDrawing = false;
-                pictureBox1.Invalidate();
+                Canvas.Invalidate();
             }
         }
 
