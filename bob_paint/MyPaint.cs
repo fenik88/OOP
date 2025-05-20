@@ -43,7 +43,7 @@ namespace bob_paint
            
 
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void MyPaint_Load(object sender, EventArgs e)
         {
             CountOfAngle = 5;
             ColorButton.BackColor = Color.Black;
@@ -66,7 +66,7 @@ namespace bob_paint
         }
 
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        private void Canvas_Paint(object sender, PaintEventArgs e)
         {
             shapes = undoRedoShapes.Shapes;
             foreach (var shape in shapes)
@@ -89,7 +89,7 @@ namespace bob_paint
            
         }
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -99,7 +99,7 @@ namespace bob_paint
 
         }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (settingShape.isDrawing)
             {
@@ -108,10 +108,11 @@ namespace bob_paint
             }
         }
 
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        private void Canvas_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && settingShape.isDrawing)
             {
+           
                 if (selectedShapeKey == "BrokenLine")
                 {
                     currentBrokenLinePoints.Add(e.Location);
@@ -206,24 +207,24 @@ namespace bob_paint
             );
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void TrackBar1_Scroll(object sender, EventArgs e)
         {
             settingShape.Width = trackBar1.Value;
         }
 
-        private void buttonUNDO_Click(object sender, EventArgs e)
+        private void ButtonUNDO_Click(object sender, EventArgs e)
         {
             undoRedoShapes.Undo();
             Canvas.Invalidate();
         }
 
-        private void buttonREDO_Click(object sender, EventArgs e)
+        private void ButtonREDO_Click(object sender, EventArgs e)
         {
             undoRedoShapes.Redo();
             Canvas.Invalidate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FillColor_Click(object sender, EventArgs e)
         {
             using (ColorDialog colorDialog = new ColorDialog())
             {
@@ -257,17 +258,17 @@ namespace bob_paint
         }
 
         // нужно реализовать сохранение и загрузку и переименовать кнопки
-        private void button1_Click_1(object sender, EventArgs e)
+        private void SaveShapes_Click_1(object sender, EventArgs e)
         {
           //  undoRedoShapes.SaveShapes();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void LoadShapes_Click(object sender, EventArgs e)
         {
            // undoRedoShapes.LoadShapes();
         }
 
-        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        private void Canvas_DoubleClick(object sender, EventArgs e)
         {
             if (selectedShapeKey == "BrokenLine" && currentBrokenLinePoints.Count >= 2)
             {
@@ -281,52 +282,13 @@ namespace bob_paint
             }
         }
 
-        private void trackBar2_Scroll(object sender, EventArgs e)
+        private void TrackBar2_Scroll(object sender, EventArgs e)
         {
             CountOfAngle = trackBar2.Value;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void menuStripUP_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStripUP_FILE_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ShapeButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void add_plugin_Click(object sender, EventArgs e)
+        private void Add_plugin_Click(object sender, EventArgs e)
         {
            //AddPlugin();
         }

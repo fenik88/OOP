@@ -88,7 +88,6 @@ namespace bob_paint
             this.textBox3.Size = new System.Drawing.Size(82, 56);
             this.textBox3.TabIndex = 12;
             this.textBox3.Text = "Fill\r\nColor";
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox2
             // 
@@ -98,7 +97,6 @@ namespace bob_paint
             this.textBox2.Size = new System.Drawing.Size(82, 56);
             this.textBox2.TabIndex = 11;
             this.textBox2.Text = "Line\r\nColor";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
@@ -107,7 +105,6 @@ namespace bob_paint
             this.textBox1.Size = new System.Drawing.Size(86, 31);
             this.textBox1.TabIndex = 10;
             this.textBox1.Text = "Shapes";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // ShapeButton
             // 
@@ -117,7 +114,6 @@ namespace bob_paint
             this.ShapeButton.Size = new System.Drawing.Size(75, 70);
             this.ShapeButton.TabIndex = 0;
             this.ShapeButton.UseVisualStyleBackColor = true;
-            this.ShapeButton.Click += new System.EventHandler(this.ShapeButton_Click);
             this.ShapeButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShapeButton_MouseDown);
             // 
             // ColorButton
@@ -140,7 +136,7 @@ namespace bob_paint
             this.buttonFillColor.Size = new System.Drawing.Size(64, 59);
             this.buttonFillColor.TabIndex = 4;
             this.buttonFillColor.UseVisualStyleBackColor = false;
-            this.buttonFillColor.Click += new System.EventHandler(this.button1_Click);
+            this.buttonFillColor.Click += new System.EventHandler(this.FillColor_Click);
             // 
             // buttonREDO
             // 
@@ -151,7 +147,7 @@ namespace bob_paint
             this.buttonREDO.TabIndex = 9;
             this.buttonREDO.Text = "ReDo";
             this.buttonREDO.UseVisualStyleBackColor = true;
-            this.buttonREDO.Click += new System.EventHandler(this.buttonREDO_Click);
+            this.buttonREDO.Click += new System.EventHandler(this.ButtonREDO_Click);
             // 
             // buttonUNDO
             // 
@@ -162,7 +158,7 @@ namespace bob_paint
             this.buttonUNDO.TabIndex = 8;
             this.buttonUNDO.Text = "UnDo";
             this.buttonUNDO.UseVisualStyleBackColor = true;
-            this.buttonUNDO.Click += new System.EventHandler(this.buttonUNDO_Click);
+            this.buttonUNDO.Click += new System.EventHandler(this.ButtonUNDO_Click);
             // 
             // menuStripUP
             // 
@@ -177,7 +173,6 @@ namespace bob_paint
             this.menuStripUP.Size = new System.Drawing.Size(1611, 42);
             this.menuStripUP.TabIndex = 1;
             this.menuStripUP.Text = "menuStrip1";
-            this.menuStripUP.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripUP_ItemClicked);
             // 
             // menuStripUP_FILE
             // 
@@ -190,7 +185,6 @@ namespace bob_paint
             this.menuStripUP_FILE.Name = "menuStripUP_FILE";
             this.menuStripUP_FILE.Size = new System.Drawing.Size(71, 36);
             this.menuStripUP_FILE.Text = "FIle";
-            this.menuStripUP_FILE.Click += new System.EventHandler(this.menuStripUP_FILE_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -226,12 +220,11 @@ namespace bob_paint
             this.Canvas.Size = new System.Drawing.Size(1337, 729);
             this.Canvas.TabIndex = 2;
             this.Canvas.TabStop = false;
-            this.Canvas.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.Canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.Canvas.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
-            this.Canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.Canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.Canvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.Canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.Canvas_Paint);
+            this.Canvas.DoubleClick += new System.EventHandler(this.Canvas_DoubleClick);
+            this.Canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseDown);
+            this.Canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseMove);
+            this.Canvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseUp);
             // 
             // contextMenuStripBaseFigure
             // 
@@ -249,7 +242,7 @@ namespace bob_paint
             this.trackBar1.Size = new System.Drawing.Size(364, 90);
             this.trackBar1.TabIndex = 6;
             this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
             // 
             // button2
             // 
@@ -260,7 +253,7 @@ namespace bob_paint
             this.button2.TabIndex = 11;
             this.button2.Text = "Load";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.LoadShapes_Click);
             // 
             // trackBar2
             // 
@@ -272,7 +265,7 @@ namespace bob_paint
             this.trackBar2.Size = new System.Drawing.Size(180, 90);
             this.trackBar2.TabIndex = 12;
             this.trackBar2.Value = 5;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.trackBar2.Scroll += new System.EventHandler(this.TrackBar2_Scroll);
             // 
             // button1
             // 
@@ -283,7 +276,7 @@ namespace bob_paint
             this.button1.TabIndex = 10;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.SaveShapes_Click_1);
             // 
             // textBox4
             // 
@@ -292,7 +285,6 @@ namespace bob_paint
             this.textBox4.Size = new System.Drawing.Size(72, 31);
             this.textBox4.TabIndex = 13;
             this.textBox4.Text = "Angles";
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox5
             // 
@@ -306,14 +298,14 @@ namespace bob_paint
             // 
             this.add_plugin.Location = new System.Drawing.Point(1195, 24);
             this.add_plugin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.add_plugin.Name = "add_plugin";
+            this.add_plugin.Name = "Add_plugin";
             this.add_plugin.Size = new System.Drawing.Size(122, 77);
             this.add_plugin.TabIndex = 15;
             this.add_plugin.Text = "Add Plugin";
             this.add_plugin.UseVisualStyleBackColor = true;
-            this.add_plugin.Click += new System.EventHandler(this.add_plugin_Click);
+            this.add_plugin.Click += new System.EventHandler(this.Add_plugin_Click);
             // 
-            // Form1
+            // MyPaint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -331,9 +323,9 @@ namespace bob_paint
             this.Controls.Add(this.trackBar2);
             this.MainMenuStrip = this.menuStripUP;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
+            this.Name = "MyPaint";
             this.Text = "Paint";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MyPaint_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStripUP.ResumeLayout(false);
