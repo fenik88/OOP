@@ -10,7 +10,10 @@ namespace bob_paint.classes.settings
 {
     internal class SettingsTempShape
     {
-      
+
+        public int CountOfAngle { get; set; } = 5;
+        public List<Point> currentBrokenLinePoints { get; set; } = new List<Point> { };
+
         public Point startPosition { get; set; } = new Point();
         public Point endPosition { get; set; } = new Point();
 

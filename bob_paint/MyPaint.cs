@@ -45,7 +45,7 @@ namespace bob_paint
         }
         private void MyPaint_Load(object sender, EventArgs e)
         {
-            CountOfAngle = 5;
+                CountOfAngle = 5;
             ColorButton.BackColor = Color.Black;
         }
 
@@ -77,9 +77,9 @@ namespace bob_paint
             if (settingShape.isDrawing && selectedShapeKey != null)
             {
                 BaseShape temporaryShape = null;
-                currentBrokenLinePoints.Add(settingShape.endPosition);
+                settingShape.currentBrokenLinePoints.Add(settingShape.endPosition);
                 temporaryShape = shapeFactory[selectedShapeKey]();
-                currentBrokenLinePoints.Remove(settingShape.endPosition);
+                settingShape.currentBrokenLinePoints.Remove(settingShape.endPosition);
                 if (temporaryShape != null)
                 {
                     temporaryShape.Draw(e.Graphics);
@@ -112,23 +112,24 @@ namespace bob_paint
         {
             if (e.Button == MouseButtons.Left && settingShape.isDrawing)
             {
-           
-                if (selectedShapeKey == "BrokenLine")
-                {
-                    currentBrokenLinePoints.Add(e.Location);
-                    Canvas.Invalidate();
-                }
-                else
-                {
+                settingShape.currentBrokenLinePoints.Add(e.Location);
+                settingShape.endPosition = e.Location;
 
-                    settingShape.endPosition = e.Location;
+                try
+                {
                     BaseShape temporaryShape = shapeFactory[selectedShapeKey]();
+
+
                     if (temporaryShape != null)
                     {
                         undoRedoShapes.AddShape(temporaryShape);
                     }
                     settingShape.isDrawing = false;
                     Canvas.Invalidate();
+                }
+                catch
+                {
+
                 }
             }
         }
@@ -147,23 +148,7 @@ namespace bob_paint
         // нужно реализовать добавление плагина
         private void AddPlugin(Type shapeType)
         {
-            string key = shapeType.Name;
-
-            if (!shapeKeys.Contains(key))
-                shapeKeys.Add(key);
-
-            shapeFactory[key] = () => (BaseShape)Activator.CreateInstance(
-                shapeType,
-                settingShape.startPosition,
-                settingShape.endPosition,
-                settingShape.StrokeColor,
-                settingShape.Width,
-                settingShape.FillColor
-            );
-            Tag = key;
-            Image tempImage = (System.Drawing.Image)Properties.Resources.Undefine;
-
-            AddShape(key, key, tempImage, shapeFactory[key]);
+            
 
         }
 
@@ -203,7 +188,7 @@ namespace bob_paint
                 key: "BrokenLine",
                 name: "BrokenLine",
                 icon: Properties.Resources.BrokenLine,
-                factory: () => new BrokenLine(currentBrokenLinePoints, settingShape.StrokeColor, settingShape.Width)
+                factory: () => new BrokenLine(settingShape.currentBrokenLinePoints, settingShape.StrokeColor, settingShape.Width)
             );
         }
 
@@ -270,13 +255,13 @@ namespace bob_paint
 
         private void Canvas_DoubleClick(object sender, EventArgs e)
         {
-            if (selectedShapeKey == "BrokenLine" && currentBrokenLinePoints.Count >= 2)
+            if (settingShape.currentBrokenLinePoints.Count >= 2)
             {
-                var brokenLine = new BrokenLine(new List<Point>(currentBrokenLinePoints),
+                var brokenLine = new BrokenLine(new List<Point>(settingShape.currentBrokenLinePoints),
                                               settingShape.StrokeColor,
                                               settingShape.Width);
                 undoRedoShapes.AddShape(brokenLine);
-                currentBrokenLinePoints.Clear();
+                settingShape.currentBrokenLinePoints.Clear();
                 settingShape.isDrawing = false;
                 Canvas.Invalidate();
             }
