@@ -8,14 +8,11 @@ namespace bob_paint.classes.lists
 {
     internal class UndoRedoShapes
     {
-        private List<BaseShape> shapes = new List<BaseShape>();
+        public List<BaseShape> shapes { get; set; } = new List<BaseShape>();
         private List<BaseShape> redo = new List<BaseShape>();
 
-        public List<BaseShape> Shapes
-        {
-            get { return new List<BaseShape>(shapes); }
-            set {}
-        }
+
+
 
         public  bool CanUndo { get { return shapes.Count > 0; } }
         public  bool CanRedo { get { return redo.Count > 0; } }

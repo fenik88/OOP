@@ -10,22 +10,36 @@ namespace bob_paint.classes.figure
 {
     internal class RectangleShape:BaseShape
     {
-        protected Point startPosition { set; get; }
-        protected Point endPosition { set; get; }
+        public string Type { get; set; } = "Rectangle";
 
-        protected Color ColorFill { get; set; }
+        public int StartX { get; set; }
+
+        public int StartY { get; set; }
+
+        public int EndX { get; set; }
+
+        public int EndY { get; set; }
+
+        public Color FillColor { get; set; }
+
+        public Point startPosition => new Point(StartX, StartY);
+
+        public Point endPosition => new Point(EndX, EndY);
+
 
         public RectangleShape(Point start, Point end, Color colorL, float widthL, Color colorF) : base(colorL, widthL)
         {
-            this.startPosition = start;
-            this.endPosition = end;
-            ColorFill= colorF;
+            StartX = start.X;
+            StartY = start.Y;
+            EndX = end.X;
+            EndY = end.Y;
+            FillColor = colorF;
         }
 
         public override void Draw(Graphics graphics)
         {
             AdjustCoordinates();
-            Brush brush = (ColorFill != Color.FromArgb(255, 255, 255, 255)) ? new SolidBrush(ColorFill) : null;
+            Brush brush = (FillColor != Color.FromArgb(255, 255, 255, 255)) ? new SolidBrush(FillColor) : null;
             Rectangle rect = new Rectangle(startPosition.X, startPosition.Y, Math.Abs(endPosition.X - startPosition.X), Math.Abs(endPosition.Y - startPosition.Y));
             if (brush != null)
             {
@@ -40,14 +54,20 @@ namespace bob_paint.classes.figure
             if (startPosition.X > endPosition.X)
             {
                 int temp = startPosition.X;
-                startPosition = new Point(endPosition.X, startPosition.Y);
-                endPosition = new Point(temp, endPosition.Y);
+                StartX = endPosition.X;
+                StartY = startPosition.Y;
+
+                EndX = temp;
+                EndY = endPosition.Y;
             }
             if (startPosition.Y > endPosition.Y)
             {
                 int temp = startPosition.Y;
-                startPosition = new Point(startPosition.X, endPosition.Y);
-                endPosition = new Point(endPosition.X, temp);
+                StartX = startPosition.X;
+                StartY = endPosition.Y;
+
+                EndX = endPosition.X;
+                EndY = temp;
             }
         }
 

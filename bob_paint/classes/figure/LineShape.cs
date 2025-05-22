@@ -10,15 +10,32 @@ namespace bob_paint.classes.figure
     internal class LineShape : BaseShape
     {
 
-        protected Point startPosition { set; get; }
-        protected Point endPosition { set; get; }
+        public string Type { get; set; } = "Line";
+        
+        public int StartX { get; set; }
+
+       
+        public int StartY { get; set; }
+
+       
+        public int EndX { get; set; }
+
+        public int EndY { get; set; }
+
+    
+        public Point startPosition => new Point(StartX, StartY);
+
+       
+        public Point endPosition => new Point(EndX, EndY);
 
        
 
         public LineShape(Point start, Point end, Color colorL, float widthL) : base(colorL, widthL)
         {
-            this.startPosition = start;
-            this.endPosition = end;
+            StartX = start.X;
+            StartY = start.Y;
+            EndX = end.X;
+            EndY = end.Y;
         }
 
         public override void Draw(Graphics graphics)

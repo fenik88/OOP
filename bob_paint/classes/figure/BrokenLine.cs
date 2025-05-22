@@ -6,30 +6,33 @@ namespace bob_paint.classes.figure
 {
     public class BrokenLine : BaseShape
     {
-        private List<Point> _points;
+
+        public string Type { get; set; } = "BrokenLine";
+        public List<Point> Points { get; set; }
+
 
         public BrokenLine(List<Point> points, Color color, float width)
             : base(color, width)
         {
-            _points = new List<Point>(points);
+            Points = new List<Point>(points);
         }
 
         public override void Draw(Graphics graphics)
         {
-            if (_points.Count < 2) return; 
+            if (Points.Count < 2) return; 
 
             pen.Color = ColorLine;
             pen.Width = WidthLine;
-            graphics.DrawLines(pen, _points.ToArray());
+            graphics.DrawLines(pen, Points.ToArray());
         }
         public void AddPoint(Point newPoint)
         {
-            _points.Add(newPoint);
+            Points.Add(newPoint);
         }
 
         public void ClearPoints()
         {
-            _points.Clear();
+            Points.Clear();
         }
     }
 }
