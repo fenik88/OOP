@@ -223,13 +223,11 @@ namespace bob_paint
                 Image = (System.Drawing.Image)Properties.Resources.Undefine
             };
             menuItem.Click += ShapeMenuItem_Click;
-            contextMenuStripBaseFigure.Items.Add(menuItem);
 
         }
 
 
 
-        // нужно реализовать добавление плагина
         private void LoadPlugins()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
