@@ -70,6 +70,5 @@ namespace bob_paint.classes.settings
         }
 
 
-        // public IShapePlugin CurrentPlugin { get; set; }
     }
 }

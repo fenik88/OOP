@@ -36,6 +36,10 @@
     <StartupObject>bob_paint.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,12 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\baseClasses\BaseShape.cs" />
+    <Compile Include="classes\Deserialisation\Deserialisation.cs" />
     <Compile Include="classes\figure\BrokenLine.cs" />
     <Compile Include="classes\figure\EllipsShape.cs" />
     <Compile Include="classes\figure\LineShape.cs" />
     <Compile Include="classes\figure\Polygon.cs" />
     <Compile Include="classes\figure\RectangleShape.cs" />
     <Compile Include="classes\lists\UndoRedoShapes.cs" />
+    <Compile Include="classes\Serialisation\Serialisation.cs" />
     <Compile Include="classes\settings\SettingsTempShape.cs" />
     <Compile Include="MyPaint.cs">
       <SubType>Form</SubType>

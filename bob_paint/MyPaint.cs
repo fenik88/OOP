@@ -1,6 +1,8 @@
 ﻿using bob_paint;
 using bob_paint.classes.figure;
 using bob_paint.classes.lists;
+using bob_paint.classes.Serialisation;
+using bob_paint.classes.Serialization;
 using bob_paint.classes.settings;
 
 using System;
@@ -45,7 +47,7 @@ namespace bob_paint
         }
         private void MyPaint_Load(object sender, EventArgs e)
         {
-                CountOfAngle = 5;
+            settingShape.CountOfAngle = 5;
             ColorButton.BackColor = Color.Black;
         }
 
@@ -68,7 +70,7 @@ namespace bob_paint
 
         private void Canvas_Paint(object sender, PaintEventArgs e)
         {
-            shapes = undoRedoShapes.Shapes;
+            shapes = undoRedoShapes.shapes;
             foreach (var shape in shapes)
             {
                 shape.Draw(e.Graphics);
@@ -139,21 +141,138 @@ namespace bob_paint
         {
             if (sender is ToolStripMenuItem menuItem && menuItem.Tag is string key)
             {
+                settingShape.currentBrokenLinePoints.Clear();
+
                 selectedShapeKey = key;
                 ShapeButton.Image = menuItem.Image;
             }
         }
-       
 
-        // нужно реализовать добавление плагина
         private void AddPlugin(Type shapeType)
         {
-            
+            string key = shapeType.Name;
+
+
+            if (shapeKeys.Contains(key))
+                return;
+
+            shapeKeys.Add(key);
+
+            shapeFactory[key] = () =>
+            {
+                try
+                {
+
+                    return (BaseShape)Activator.CreateInstance(
+                        shapeType,
+                        settingShape.startPosition,
+                        settingShape.endPosition,
+                        settingShape.StrokeColor,
+                        settingShape.Width,
+                        settingShape.FillColor
+                    );
+                }
+                catch
+                {
+
+                    try
+                    {
+                        var shape = (BaseShape)Activator.CreateInstance(shapeType);
+
+                        shape.GetType().GetProperty("StartX")?.SetValue(shape, settingShape.startPosition.X);
+                        shape.GetType().GetProperty("StartY")?.SetValue(shape, settingShape.startPosition.Y);
+                        shape.GetType().GetProperty("EndX")?.SetValue(shape, settingShape.endPosition.X);
+                        shape.GetType().GetProperty("EndY")?.SetValue(shape, settingShape.endPosition.Y);
+
+                        var strokeProp = shape.GetType().GetProperty("ColorLine");
+                        strokeProp?.SetValue(shape, settingShape.StrokeColor);
+
+                        var widthProp = shape.GetType().GetProperty("WidthLine");
+                        widthProp?.SetValue(shape, settingShape.Width);
+
+                        var fillProp = shape.GetType().GetProperty("FillColor");
+                        fillProp?.SetValue(shape, settingShape.FillColor);
+
+                        return shape;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка создания фигуры {key}: {ex.Message}");
+                        return null;
+                    }
+                }
+            };
+
+            AddShape(key, key, Properties.Resources.Undefine, shapeFactory[key]);
+
+            if (!shapeKeys.Contains(key))
+                shapeKeys.Add(key);
+
+            shapeFactory[key] = () => (BaseShape)Activator.CreateInstance(
+                shapeType,
+                settingShape.startPosition,
+                settingShape.endPosition,
+                settingShape.StrokeColor,
+                settingShape.Width,
+                settingShape.FillColor
+            );
+
+            var menuItem = new ToolStripMenuItem(key)
+            {
+                Tag = key,
+                Image = (System.Drawing.Image)Properties.Resources.Undefine
+            };
+            menuItem.Click += ShapeMenuItem_Click;
+            contextMenuStripBaseFigure.Items.Add(menuItem);
 
         }
 
 
-  
+
+        // нужно реализовать добавление плагина
+        private void LoadPlugins()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "DLL файлы (*.dll)|*.dll";
+                openFileDialog.Title = "Выберите плагин";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string dllPath = openFileDialog.FileName;
+
+                    try
+                    {
+                        Assembly assembly = Assembly.LoadFrom(dllPath);
+
+                        int found = 0;
+                        foreach (Type type in assembly.GetTypes())
+                        {
+                            if (type.IsSubclassOf(typeof(BaseShape)) && !type.IsAbstract)
+                            {
+                                AddPlugin(type);
+                                found++;
+                            }
+                        }
+
+                        if (found == 0)
+                        {
+                            MessageBox.Show("В выбранном файле не найдено подходящих плагинов.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Загружено плагинов: {found}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка загрузки плагина:\n{ex}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
         private void InitializeDefaultShapes()
         {
             AddShape(
@@ -245,12 +364,66 @@ namespace bob_paint
         // нужно реализовать сохранение и загрузку и переименовать кнопки
         private void SaveShapes_Click_1(object sender, EventArgs e)
         {
-          //  undoRedoShapes.SaveShapes();
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.Title = "Сохранить фигуры";
+                saveFileDialog.DefaultExt = "json";
+                saveFileDialog.FileName = "shapes.json";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Serialisation serialization = new Serialisation();
+                    if (serialization.SaveShapesToJson(shapes, saveFileDialog.FileName))
+                    {
+                        MessageBox.Show("Фигуры успешно сохранены!");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ошибка при сохранении");
+                    }
+                }
+
+            }
+
         }
 
         private void LoadShapes_Click(object sender, EventArgs e)
         {
-           // undoRedoShapes.LoadShapes();
+
+            using (var openFileDialog = new OpenFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = true,
+                Title = "Открыть файл с фигурами",
+                DefaultExt = "json",
+                FileName = "shapes.json"
+            })
+            {
+                if (openFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    Deserilization deserilization = new Deserilization(shapeFactory, settingShape);
+                    var shapes = deserilization.LoadShapesFromJson(openFileDialog.FileName);
+
+                    undoRedoShapes.shapes = shapes;
+                    this.shapes = shapes;
+                    Canvas.Invalidate();
+
+                    MessageBox.Show("Фигуры успешно загружены!", "Успех",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при загрузке: {ex.Message}", "Ошибка",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void Canvas_DoubleClick(object sender, EventArgs e)
@@ -275,7 +448,7 @@ namespace bob_paint
 
         private void Add_plugin_Click(object sender, EventArgs e)
         {
-           //AddPlugin();
+           LoadPlugins();
         }
     }
 }

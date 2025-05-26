@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace bob_paint.classes.figure
 {
     public class BrokenLine : BaseShape
     {
-
+        [JsonProperty("Type")]
         public string Type { get; set; } = "BrokenLine";
+
+        [JsonProperty("Points")]
         public List<Point> Points { get; set; }
 
 

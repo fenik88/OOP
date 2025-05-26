@@ -1,0 +1,25 @@
+[
+  {
+    "Type": "Line",
+    "StartX": 67,
+    "StartY": 47,
+    "EndX": 67,
+    "EndY": 47
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 99,
+    "StartY": 83,
+    "EndX": 347,
+    "EndY": 164,
+    "FillColorArgb": -1
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 161,
+    "StartY": 45,
+    "EndX": 510,
+    "EndY": 78,
+    "FillColor": "255, 255, 255"
+  }
+]

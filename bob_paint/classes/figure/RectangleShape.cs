@@ -5,27 +5,36 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace bob_paint.classes.figure
 {
     internal class RectangleShape:BaseShape
     {
+        [JsonProperty("Type")]
         public string Type { get; set; } = "Rectangle";
 
+        [JsonProperty("StartX")]
         public int StartX { get; set; }
 
+        [JsonProperty("StartY")]
         public int StartY { get; set; }
 
+        [JsonProperty("EndX")]
         public int EndX { get; set; }
 
+        [JsonProperty("EndY")]
         public int EndY { get; set; }
 
+
+        [JsonProperty("FillColor")]
         public Color FillColor { get; set; }
 
+        [JsonIgnore]
         public Point startPosition => new Point(StartX, StartY);
 
+        [JsonIgnore]
         public Point endPosition => new Point(EndX, EndY);
-
 
         public RectangleShape(Point start, Point end, Color colorL, float widthL, Color colorF) : base(colorL, widthL)
         {
