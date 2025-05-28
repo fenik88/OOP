@@ -1,0 +1,22 @@
+[
+  {
+    "Type": "Rectangle",
+    "StartX": 67,
+    "StartY": 64,
+    "EndX": 436,
+    "EndY": 229,
+    "FillColor": "255, 128, 192",
+    "ColorLineArgb": -65536,
+    "WidthLine": 11.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 330,
+    "StartY": 48,
+    "EndX": 674,
+    "EndY": 307,
+    "FillColor": "Purple",
+    "ColorLineArgb": -8372160,
+    "WidthLine": 11.0
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "Type": "Ellips",
+    "StartX": 64,
+    "StartY": 52,
+    "EndX": 456,
+    "EndY": 367,
+    "FillColor": "Transparent"
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 175,
+    "StartY": 62,
+    "EndX": 715,
+    "EndY": 186,
+    "FillColor": "Lime"
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 147,
+    "StartY": 257,
+    "EndX": 471,
+    "EndY": 360,
+    "FillColor": "Transparent"
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "36, 233"
+    ]
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "36, 233",
+      "77, 197"
+    ]
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "36, 233",
+      "77, 197",
+      "46, 86"
+    ]
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "36, 233",
+      "77, 197",
+      "46, 86",
+      "2, 260"
+    ]
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "36, 233",
+      "77, 197",
+      "46, 86",
+      "2, 260",
+      "53, 266"
+    ]
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "36, 233",
+      "77, 197",
+      "46, 86",
+      "2, 260",
+      "53, 266",
+      "36, 232"
+    ]
+  },
+  {
+    "Type": "Ellips",
+    "StartX": 78,
+    "StartY": 15,
+    "EndX": 246,
+    "EndY": 396,
+    "FillColor": "0, 255, 64"
+  }
+]

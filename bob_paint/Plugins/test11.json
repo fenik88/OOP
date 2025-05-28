@@ -1,0 +1,33 @@
+[
+  {
+    "Type": "Line",
+    "StartX": 225,
+    "StartY": 71,
+    "EndX": 556,
+    "EndY": 340,
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 21.0
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 10,
+    "StartX": 48,
+    "StartY": 36,
+    "EndX": 253,
+    "EndY": 344,
+    "FillColor": "255, 128, 128",
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 21.0
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 10,
+    "StartX": 440,
+    "StartY": 94,
+    "EndX": 622,
+    "EndY": 249,
+    "FillColor": "64, 0, 64",
+    "StrokeColorArgb": -32640,
+    "WidthLine": 21.0
+  }
+]

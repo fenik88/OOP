@@ -1,0 +1,27 @@
+[
+  {
+    "Type": "Ellips",
+    "StartX": 64,
+    "StartY": 52,
+    "EndX": 456,
+    "EndY": 367,
+    "FillColor": "Transparent"
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 175,
+    "StartY": 62,
+    "EndX": 715,
+    "EndY": 186,
+    "FillColor": "Lime"
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 147,
+    "StartY": 257,
+    "EndX": 471,
+    "EndY": 360,
+    "FillColor": "128, 255, 128"
+  }
+]

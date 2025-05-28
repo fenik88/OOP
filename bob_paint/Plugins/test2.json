@@ -1,0 +1,19 @@
+[
+  {
+    "Type": "Ellips",
+    "StartX": 57,
+    "StartY": 42,
+    "EndX": 319,
+    "EndY": 253,
+    "FillColor": "255, 255, 255"
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 432,
+    "StartY": 23,
+    "EndX": 587,
+    "EndY": 209,
+    "FillColor": "128, 64, 64"
+  }
+]

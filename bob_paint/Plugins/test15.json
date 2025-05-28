@@ -1,0 +1,24 @@
+[
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 209,
+    "StartY": 64,
+    "EndX": 635,
+    "EndY": 328,
+    "FillColor": "0, 128, 192",
+    "StrokeColorArgb": -16711936,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 104,
+    "StartY": 64,
+    "EndX": 315,
+    "EndY": 269,
+    "FillColor": "Black",
+    "StrokeColorArgb": -16711936,
+    "WidthLine": 16.0
+  }
+]

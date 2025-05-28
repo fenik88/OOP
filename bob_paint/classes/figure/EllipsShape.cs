@@ -12,7 +12,7 @@ namespace bob_paint.classes.figure
     internal class EllipsShape: BaseShape
     {
         [JsonProperty("Type")]
-        public string Type { get; set; } = "Polygon";
+        public string Type { get; set; } = "Ellips";
 
         [JsonProperty("StartX")]
         public int StartX { get; set; }

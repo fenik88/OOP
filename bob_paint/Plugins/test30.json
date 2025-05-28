@@ -1,0 +1,71 @@
+[
+  {
+    "Type": "Line",
+    "StartX": 220,
+    "StartY": 87,
+    "EndX": 220,
+    "EndY": 87,
+    "ColorLineArgb": -16711681,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Line",
+    "StartX": 80,
+    "StartY": 156,
+    "EndX": 80,
+    "EndY": 156,
+    "ColorLineArgb": -16711681,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Line",
+    "StartX": 420,
+    "StartY": 164,
+    "EndX": 120,
+    "EndY": 169,
+    "ColorLineArgb": -16711681,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 53,
+    "StartY": 77,
+    "EndX": 371,
+    "EndY": 125,
+    "FillColor": "0, 255, 64",
+    "ColorLineArgb": -16711681,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 163,
+    "StartY": 317,
+    "EndX": 642,
+    "EndY": 120,
+    "FillColor": "0, 255, 64",
+    "ColorLineArgb": -65536,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 226,
+    "StartY": 340,
+    "EndX": 20,
+    "EndY": 231,
+    "FillColor": "255, 128, 0",
+    "ColorLineArgb": -65536,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Ellips",
+    "StartX": 456,
+    "StartY": 43,
+    "EndX": 648,
+    "EndY": 130,
+    "FillColor": "255, 128, 0",
+    "ColorLineArgb": -16760704,
+    "WidthLine": 16.0
+  }
+]

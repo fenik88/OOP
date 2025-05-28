@@ -46,14 +46,29 @@ namespace bob_paint.classes.Serialisation
             string type = item["Type"]?.ToString();
             if (string.IsNullOrEmpty(type))
             {
-                Console.WriteLine("Тип фигуры не указан");
+                Console.WriteLine("Type not specified");
                 return null;
             }
 
             ApplyShapeProperties(item);
-            var shape = shapeFactory[type]();
-            return shapeFactory[type]();
+
+            if (!shapeFactory.TryGetValue(type, out var creator))
+                return null;
+
+            // Создаем фигуру с правильными параметрами
+            var shape = creator();
+
+            // Обновляем параметры пера
+            if (shape != null)
+            {
+                shape.ColorLine = settingShape.StrokeColor;
+                shape.WidthLine = settingShape.Width;
+                shape.UpdatePen();
+            }
+
+            return shape;
         }
+
 
         private void ApplyShapeProperties(JToken item)
         {
@@ -68,10 +83,11 @@ namespace bob_paint.classes.Serialisation
                 item["EndY"]?.ToObject<int>() ?? 0
             );
 
-            settingShape.StrokeColor = ParseJsonColor(item["StrokeColor"] ?? item["ColorLine"], Color.Black);
-
+            settingShape.StrokeColor = item["StrokeColorArgb"] != null
+                    ? Color.FromArgb(item["StrokeColorArgb"].ToObject<int>())
+                    : Color.Black;
             settingShape.FillColor = ParseJsonColor(item["FillColor"], Color.Transparent);
-            settingShape.Width = item["Width"]?.ToObject<int>() ?? 1;
+            settingShape.Width = item["WidthLine"]?.ToObject<int>() ?? 1;
 
             if (item["Points"] != null)
             {
@@ -111,8 +127,24 @@ namespace bob_paint.classes.Serialisation
             switch (colorToken.Type)
             {
                 case JTokenType.String:
-                    Color namedColor = Color.FromName(colorToken.ToString());
-                    return namedColor.A != 0 ? namedColor : defaultColor;
+                    var str = colorToken.ToString();
+
+                    // Попробуем распарсить как имя цвета
+                    var namedColor = Color.FromName(str);
+                    if (namedColor.IsKnownColor)
+                        return namedColor;
+
+                    // Попробуем как "R, G, B"
+                    var parts = str.Split(',');
+                    if (parts.Length == 3 &&
+                        int.TryParse(parts[0].Trim(), out int r) &&
+                        int.TryParse(parts[1].Trim(), out int g) &&
+                        int.TryParse(parts[2].Trim(), out int b))
+                    {
+                        return Color.FromArgb(r, g, b);
+                    }
+
+                    return defaultColor;
 
                 case JTokenType.Integer:
                     return Color.FromArgb(colorToken.ToObject<int>());
@@ -121,6 +153,7 @@ namespace bob_paint.classes.Serialisation
                     return defaultColor;
             }
         }
+
     }
 
 }

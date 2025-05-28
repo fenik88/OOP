@@ -18,8 +18,7 @@ namespace bob_paint.classes.Serialization
                     dynamic obj = new System.Dynamic.ExpandoObject();
                     obj.Type = shape.GetType().Name;
 
-                    // Автоматически собираем все свойства с атрибутом JsonProperty
-                    var properties = shape.GetType()
+                        var properties = shape.GetType()
                         .GetProperties()
                         .Where(p => p.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Any());
 

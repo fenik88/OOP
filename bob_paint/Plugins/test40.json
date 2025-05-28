@@ -1,0 +1,130 @@
+[
+  {
+    "Type": "Ellips",
+    "StartX": 96,
+    "StartY": 45,
+    "EndX": 621,
+    "EndY": 297,
+    "FillColor": "0, 64, 128",
+    "StrokeColorArgb": -32640,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 55,
+    "StartY": 30,
+    "EndX": 411,
+    "EndY": 280,
+    "FillColor": "Red",
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182",
+      "396, 56"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182",
+      "396, 56",
+      "141, 7"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182",
+      "396, 56",
+      "141, 7",
+      "69, 89"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182",
+      "396, 56",
+      "141, 7",
+      "69, 89",
+      "59, 277"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182",
+      "396, 56",
+      "141, 7",
+      "69, 89",
+      "59, 277",
+      "94, 297"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "BrokenLine",
+    "Points": [
+      "75, 304",
+      "252, 307",
+      "525, 182",
+      "396, 56",
+      "141, 7",
+      "69, 89",
+      "59, 277",
+      "94, 297"
+    ],
+    "StrokeColorArgb": -8388544,
+    "WidthLine": 16.0
+  }
+]

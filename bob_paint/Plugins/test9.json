@@ -1,0 +1,22 @@
+[
+  {
+    "Type": "Ellips",
+    "StartX": 172,
+    "StartY": 139,
+    "EndX": 524,
+    "EndY": 361,
+    "FillColor": "128, 128, 255",
+    "ColorLine": "0, 128, 255",
+    "WidthLine": 6.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 20,
+    "StartY": 61,
+    "EndX": 587,
+    "EndY": 103,
+    "FillColor": "128, 128, 255",
+    "ColorLine": "0, 128, 255",
+    "WidthLine": 6.0
+  }
+]

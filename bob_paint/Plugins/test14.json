@@ -1,0 +1,33 @@
+[
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 83,
+    "StartY": 39,
+    "EndX": 293,
+    "EndY": 260,
+    "FillColor": "255, 255, 255",
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 2.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 348,
+    "StartY": 47,
+    "EndX": 590,
+    "EndY": 301,
+    "FillColor": "0, 255, 64",
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 16.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 70,
+    "StartY": 28,
+    "EndX": 284,
+    "EndY": 392,
+    "FillColor": "0, 128, 192",
+    "StrokeColorArgb": -128,
+    "WidthLine": 16.0
+  }
+]

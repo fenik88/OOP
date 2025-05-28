@@ -1,0 +1,27 @@
+[
+  {
+    "Type": "Polygon",
+    "StartX": 61,
+    "StartY": 68,
+    "EndX": 331,
+    "EndY": 226,
+    "FillColor": "255, 255, 255"
+  },
+  {
+    "Type": "Polygon",
+    "Nlines": 5,
+    "StartX": 447,
+    "StartY": 49,
+    "EndX": 628,
+    "EndY": 370,
+    "FillColor": "255, 255, 255"
+  },
+  {
+    "Type": "Polygon",
+    "StartX": 24,
+    "StartY": 69,
+    "EndX": 334,
+    "EndY": 350,
+    "FillColor": "255, 128, 64"
+  }
+]
