@@ -1,0 +1,32 @@
+[
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 126,
+    "StartY": 78,
+    "EndX": 586,
+    "EndY": 320,
+    "FillColorArgb": 16777215,
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 2.0
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 109,
+    "StartY": 59,
+    "EndX": 490,
+    "EndY": 364,
+    "FillColorArgb": 16777215,
+    "StrokeColorArgb": -32640,
+    "WidthLine": 6.0
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 2,
+    "StartY": 6,
+    "EndX": 373,
+    "EndY": 272,
+    "FillColorArgb": 16777215,
+    "StrokeColorArgb": -32640,
+    "WidthLine": 24.0
+  }
+]

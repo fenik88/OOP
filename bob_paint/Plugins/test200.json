@@ -1,0 +1,22 @@
+[
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 81,
+    "StartY": 107,
+    "EndX": 539,
+    "EndY": 341,
+    "FillColorArgb": -1,
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 2.0
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 202,
+    "StartY": 18,
+    "EndX": 632,
+    "EndY": 178,
+    "FillColorArgb": -32640,
+    "StrokeColorArgb": -16711681,
+    "WidthLine": 25.0
+  }
+]

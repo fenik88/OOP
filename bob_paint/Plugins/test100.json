@@ -1,0 +1,22 @@
+[
+  {
+    "Type": "Ellips",
+    "StartX": 38,
+    "StartY": 59,
+    "EndX": 702,
+    "EndY": 306,
+    "FillColor": "128, 255, 128",
+    "StrokeColorArgb": -16777216,
+    "WidthLine": 1.0
+  },
+  {
+    "Type": "Ellips",
+    "StartX": 93,
+    "StartY": 115,
+    "EndX": 407,
+    "EndY": 260,
+    "FillColor": "255, 0, 128",
+    "StrokeColorArgb": -8355585,
+    "WidthLine": 25.0
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 184,
+    "StartY": 76,
+    "EndX": 357,
+    "EndY": 328,
+    "FillColorString": "255,255,255",
+    "StrokeColorArgb": -32640,
+    "WidthLine": 2.0
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 63,
+    "StartY": 24,
+    "EndX": 458,
+    "EndY": 49,
+    "FillColorString": "255,255,255",
+    "StrokeColorArgb": -32640,
+    "WidthLine": 6.0
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 448,
+    "StartY": 148,
+    "EndX": 648,
+    "EndY": 314,
+    "FillColorString": "255,255,255",
+    "StrokeColorArgb": -65408,
+    "WidthLine": 6.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 22,
+    "StartY": 84,
+    "EndX": 160,
+    "EndY": 230,
+    "FillColor": "Transparent",
+    "StrokeColorArgb": -65408,
+    "WidthLine": 6.0
+  },
+  {
+    "Type": "Rectangle",
+    "StartX": 484,
+    "StartY": 50,
+    "EndX": 655,
+    "EndY": 119,
+    "FillColor": "Red",
+    "StrokeColorArgb": -65408,
+    "WidthLine": 6.0
+  }
+]

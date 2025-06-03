@@ -1,0 +1,20 @@
+[
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 79,
+    "StartY": 143,
+    "EndX": 582,
+    "EndY": 148,
+    "FillColorArgb": -1,
+    "StrokeColorArgb": -16777216
+  },
+  {
+    "Type": "TrapezoidShape",
+    "StartX": 99,
+    "StartY": 72,
+    "EndX": 508,
+    "EndY": 5,
+    "FillColorArgb": -256,
+    "StrokeColorArgb": -8355585
+  }
+]
