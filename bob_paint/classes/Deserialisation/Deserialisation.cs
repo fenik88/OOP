@@ -55,10 +55,8 @@ namespace bob_paint.classes.Serialisation
             if (!shapeFactory.TryGetValue(type, out var creator))
                 return null;
 
-            // Создаем фигуру с правильными параметрами
             var shape = creator();
 
-            // Обновляем параметры пера
             if (shape != null)
             {
                 shape.ColorLine = settingShape.StrokeColor;
@@ -129,12 +127,10 @@ namespace bob_paint.classes.Serialisation
                 case JTokenType.String:
                     var str = colorToken.ToString();
 
-                    // Попробуем распарсить как имя цвета
                     var namedColor = Color.FromName(str);
                     if (namedColor.IsKnownColor)
                         return namedColor;
 
-                    // Попробуем как "R, G, B"
                     var parts = str.Split(',');
                     if (parts.Length == 3 &&
                         int.TryParse(parts[0].Trim(), out int r) &&
